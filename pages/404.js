@@ -1,7 +1,7 @@
 import { IoIosWarning } from 'react-icons/io';
-import Layout from '../components/Layout';
 import Link from 'next/Link';
-import styles from '../styles/404.module.css';
+import Layout from '@/components/Layout';
+import styles from '@/styles/404.module.css';
 
 export default function NotFoundPage() {
 	return (
