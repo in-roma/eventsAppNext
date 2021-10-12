@@ -1,4 +1,4 @@
-import Link from 'next/Link';
+import Link from 'next/link';
 import styles from '@/styles/Header.module.css';
 
 export default function Header() {
@@ -6,7 +6,7 @@ export default function Header() {
 		<header className={styles.header}>
 			<div className={styles.logo}>
 				<Link href="/">
-					<a>Events</a>
+					<a>#ArtEvents</a>
 				</Link>
 			</div>
 			<nav>

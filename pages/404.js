@@ -1,5 +1,5 @@
 import { IoIosWarning } from 'react-icons/io';
-import Link from 'next/Link';
+import Link from 'next/link';
 import Layout from '@/components/Layout';
 import styles from '@/styles/404.module.css';
 
