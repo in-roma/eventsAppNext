@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import { API_URL } from '@/config/index';
-import styles from '@/components/styles';
+import styles from '@/styles/Event.module.css';
 
 export default function EventPage({ evt }) {
 	const deleteEvent = (e) => {
@@ -31,9 +31,10 @@ export default function EventPage({ evt }) {
 				{evt.image && (
 					<div className={styles.image}>
 						<Image
-							src={evt.image.formats.medium.url}
+							src={evt.image.formats.thumbnail.url}
 							width={960}
 							height={600}
+							alt={''}
 						/>
 					</div>
 				)}
