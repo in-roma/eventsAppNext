@@ -11,6 +11,8 @@ import { FaImage } from 'react-icons/fa';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Form.module.css';
 import Layout from '@/components/Layout';
+import Modal from '@/components/Modal';
+import ImageUpload from '@/components/ImageUpload';
 
 export default function EditEventPage({ event }) {
 	const [values, setValues] = useState({
@@ -25,6 +27,9 @@ export default function EditEventPage({ event }) {
 	const [imagePreview, setImagePreview] = useState(
 		event.image ? event.image.formats.thumbnail.url : null
 	);
+
+	const [showModal, setShowModal] = useState(false);
+
 	const router = useRouter();
 
 	const handleSubmit = async (e) => {
@@ -52,6 +57,14 @@ export default function EditEventPage({ event }) {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setValues({ ...values, [name]: value });
+	};
+
+	const imageUploaded = async (e) => {
+		const res = await fetch(`${API_URL}/events/${event.id}`);
+		const data = await res.json();
+
+		setImagePreview(data.image.formats.thumbnail.url);
+		setShowModal(false);
 	};
 
 	return (
@@ -144,10 +157,16 @@ export default function EditEventPage({ event }) {
 				</div>
 			)}
 			<div>
-				<button className="btn-secondary">
+				<button
+					onClick={() => setShowModal(true)}
+					className="btn-secondary"
+				>
 					<FaImage /> Set Image
 				</button>
 			</div>
+			<Modal show={showModal} onClose={() => setShowModal(false)}>
+				<ImageUpload evtId={event.id} imageUploaded={imageUploaded} />
+			</Modal>
 		</Layout>
 	);
 }
