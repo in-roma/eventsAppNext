@@ -1,5 +1,5 @@
 import cookie from 'cookie';
 
-export function parseCookie(req) {
+export function parseCookies(req) {
 	return cookie.parse(req ? req.headers.cookie || '' : '');
 }
